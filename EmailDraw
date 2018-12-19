@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lan="en">
+<head>
+	<meta charset="UTF-8">
+	<title> My Canvas Illustration </title>
+	<style>	
+	body{
+		background-image: url("galaxy.jpg");
+		background-repeat:no-repeat;
+		background-size:cover;
+	}
+	canvas{
+		border: solid 5px red;
+	}
+	</style>
+</head>
+<body>
+	<canvas id="my_canvas" width="200" height="300"></canvas>
+	
+	<script>
+		function drawCanvas(){
+			var mycanvas = document.getElementById("my_canvas");
+			var c = mycanvas.getContext("2d");
+			
+			var x = 15;
+			var y = 120;
+			var width = 170;
+			var height = 70;
+			
+			
+			var rhombus = new Path2D();
+			
+			rhombus.moveTo(x, y);
+			rhombus.lineTo(x+width/2, y-height/2);
+			rhombus.lineTo(x+width,y);
+			rhombus.lineTo(x+width/2, y+height/2);
+			rhombus.closePath();
+			
+			var square = new Path2D();
+			
+			square.rect(x+20, y-20, width-40, height);
+			
+			var triangle1 = new Path2D();
+			triangle1.moveTo(x, y);
+			triangle1.lineTo(x, y+height);
+			triangle1.lineTo(x+width, y+height);
+			triangle1.closePath();
+			
+			var triangle2 = new Path2D();
+			triangle2.moveTo(x+width, y);
+			triangle2.lineTo(x+width, y+height);
+			triangle2.lineTo(x, y+height);
+			triangle2.closePath();
+			
+			c.fillStyle = "red";
+			c.fill(rhombus);
+			c.fillStyle = "orange";
+			c.fill(square);
+				//adding shadows to the triangles
+			c.shadowBlue = 5;
+			c.shadowColor = "black";
+			c.fillStyle = "#B22222";
+			c.fill(triangle1);
+			
+			c.fillStyle = "#800000";
+			c.fill(triangle2);
+			
+		}
+		drawCanvas();
+	</script>
+</body>
+</html>
